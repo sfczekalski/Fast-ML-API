@@ -6,16 +6,24 @@
 #
 anyio==3.4.0
     # via starlette
+asgiref==3.4.1
+    # via uvicorn
 backports.entry-points-selectable==1.1.1
     # via virtualenv
 cfgv==3.3.1
     # via pre-commit
+click==8.0.3
+    # via uvicorn
 distlib==0.3.3
     # via virtualenv
 fastapi==0.70.0
     # via -r requirements.in
 filelock==3.4.0
     # via virtualenv
+h11==0.12.0
+    # via uvicorn
+httptools==0.2.0
+    # via uvicorn
 identify==2.4.0
     # via pre-commit
 idna==3.3
@@ -28,8 +36,12 @@ pre-commit==2.15.0
     # via -r requirements.in
 pydantic==1.8.2
     # via fastapi
+python-dotenv==0.19.2
+    # via uvicorn
 pyyaml==6.0
-    # via pre-commit
+    # via
+    #   pre-commit
+    #   uvicorn
 six==1.16.0
     # via virtualenv
 sniffio==1.2.0
@@ -40,5 +52,13 @@ toml==0.10.2
     # via pre-commit
 typing-extensions==4.0.0
     # via pydantic
+uvicorn[standard]==0.15.0
+    # via -r requirements.in
+uvloop==0.16.0
+    # via uvicorn
 virtualenv==20.10.0
     # via pre-commit
+watchgod==0.7
+    # via uvicorn
+websockets==10.1
+    # via uvicorn
