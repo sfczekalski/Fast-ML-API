@@ -1,1 +1,1 @@
-# Fast-ML-API
+# Fast ML API
