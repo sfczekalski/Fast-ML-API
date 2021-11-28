@@ -11,6 +11,11 @@ setup:
 install:
 	source venv/bin/activate && \
 	pip-compile requirements.in && \
+	pip install -r requirements.txt
+
+update:
+	source venv/bin/activate && \
+	pip-compile --upgrade requirements.in && \
 	pip install -r requirements.txt && \
 	pre-commit autoupdate
 
