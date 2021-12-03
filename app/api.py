@@ -8,6 +8,8 @@ from fastapi import FastAPI, Request, status
 
 from eloquent_matsumoto import predict as predict_module
 
+from .schemas import PredictPayload
+
 app = FastAPI(
     title="Model serving API",
     description="Model serving API developed using FastAPI framework",
@@ -51,7 +53,7 @@ def add_response_metadata(function: Callable) -> Callable:
     return wrapper
 
 
-@app.get("/health/")
+@app.get("/health")
 @add_response_metadata
 def health(request: Request) -> Dict[str, Union[str, Any]]:
     """Health check.
@@ -71,18 +73,19 @@ def health(request: Request) -> Dict[str, Union[str, Any]]:
     return response
 
 
-@app.post("/predict/")
+@app.post("/predict")
 @add_response_metadata
-def predict(request: Request, payload: Any) -> Dict[str, Union[str, Any]]:
+def predict(request: Request, payload: PredictPayload) -> Dict[str, Union[str, Any]]:
     """Predict endpoint.
 
     Args:
         request (Request): The request object.
+        payload (PredictPayload): Request's payload.
 
     Returns:
         Dict[str, Union[str, Any]]: Prediction response.
     """
-    texts = [item.text for item in payload["texts"]]
+    texts = [item.text for item in payload.texts]
 
     predictions = predict_module._predict(texts)
 
