@@ -16,3 +16,15 @@ def client() -> TestClient:
 
 def test_smoke(client: TestClient):
     pass
+
+
+def test_health(client: TestClient):
+    response = client.get("/health")
+
+    assert response.status_code == 200
+
+    response = response.json()
+
+    assert response["message"] == "OK"
+    assert response["status-code"] == 200
+    assert response["data"] == {}
