@@ -62,3 +62,18 @@ def test_predict_no_texts(client: TestClient):
     response = response.json()
     assert response["detail"][0]["type"] == "value_error"
     assert response["detail"][0]["msg"] == "Texts list cannot be empty"
+
+
+def test_predict_text_empty(client: TestClient):
+    payload = {"texts": [""]}
+
+    response = client.post(
+        url="/predict",
+        json=payload,
+    )
+
+    assert response.status_code == 422
+
+    response = response.json()
+    assert response["detail"][0]["type"] == "value_error"
+    assert response["detail"][0]["msg"] == "Texts list cannot be empty"

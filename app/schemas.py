@@ -2,13 +2,14 @@
 
 from typing import List
 
-from pydantic import BaseModel, constr, validator
+from fastapi import Query
+from pydantic import BaseModel, validator
 
 
 class Text(BaseModel):
     """Schema of a correct text field."""
 
-    text: str = constr(min_length=1)
+    text: str = Query(..., min_length=1)
 
 
 class PredictPayload(BaseModel):
