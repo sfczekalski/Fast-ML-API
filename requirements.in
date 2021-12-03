@@ -1,5 +1,7 @@
 pre-commit
 fastapi
 uvicorn[standard]
+pytest
+requests
 
 -e .

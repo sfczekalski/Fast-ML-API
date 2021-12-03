@@ -24,3 +24,7 @@ run-debug:
 	uvicorn app.api:app \
 		--reload \
 		--reload-dir app
+
+test:
+	source venv/bin/activate && \
+	python -m pytest tests/
